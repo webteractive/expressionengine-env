@@ -1,15 +1,6 @@
 /node_modules
 /vendor
 
-/images/avatars
-/images/captchas
-/images/forum_attachments
-/images/pm_attachments
-/images/signature_attachments
-/images/uploads
-
-/system/user/cache
-
 .env
 npm-debug.log
 yarn-error.log
