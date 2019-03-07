@@ -2,14 +2,29 @@
 
 require_once(__DIR__ . '/../../boot.php');
 
-$config['debug'] = env('DEBUG', '2');
-$config['is_system_on'] = env('ONLINE', 'y');
-$config['show_ee_news'] = env('SHOW_EE_NEWS', 'n');
-$config['multiple_sites_enabled'] = env('MULTIPLE_SITES_ENABLED', 'n');
+$config['base_url'] = env('BASE_URL');
+$config['base_path'] = env('BASE_PATH');
 
-$config['base_url'] = env('BASE_URL', 'http://eeenv.wip/');
+// Database
+$config['database'] = [
+	'expressionengine' => [
+		'hostname' => env('DB_HOST', 'localhost'),
+		'database' => env('DB_NAME', 'freshee'),
+		'username' => env('DB_USER', 'root'),
+		'password' => env('DB_PASSWORD', 'secret'),
+		'dbprefix' => env('DB_TABLE_PREFIX', 'exp_'),
+		'char_set' => env('DB_CHARSET', 'utf8mb4'),
+		'dbcollat' => 'utf8mb4_unicode_ci',
+		'port' => env('DB_PORT', '')
+	],
+];
+
+$config['debug'] = '1';
+$config['is_system_on'] = 'y';
+$config['show_ee_news'] = 'n';
+$config['multiple_sites_enabled'] = 'n';
+
 $config['cp_url'] = env('CP_URL', '{base_url}/admin.php');
-$config['base_path'] = env('BASE_PATH', '/Users/hadefication/code/eeenv/');
 
 $config['use_newrelic'] = 'y';
 $config['newrelic_app_name'] = 'Awesome App';
@@ -28,20 +43,6 @@ $config['theme_folder_path'] = '{base_path}/themes/';
 $config['app_version'] = '5.1.3';
 $config['encryption_key'] = '008ee2cd53fa33d065fee097a40279152453d815';
 $config['session_crypt_key'] = '63c5e2e453977e9e5142b7c580f4aa5cb1314bfd';
-
-// Database
-$config['database'] = [
-	'expressionengine' => [
-		'hostname' => env('DB_HOST', 'localhost'),
-		'database' => env('DB_NAME', 'freshee'),
-		'username' => env('DB_USER', 'root'),
-		'password' => env('DB_PASSWORD', 'secret'),
-		'dbprefix' => env('DB_TABLE_PREFIX', 'exp_'),
-		'char_set' => env('DB_CHARSET', 'utf8mb4'),
-		'dbcollat' => 'utf8mb4_unicode_ci',
-		'port' => env('DB_PORT', '')
-	],
-];
 
 $config['share_analytics'] = 'y';
 
@@ -92,7 +93,7 @@ $config['autosave_interval_seconds'] = '30';
 $config['autosave_prune_hours'] = '4';
 
 $config['ban_action'] = 'message';
-$config['ban_destination'] = 'http://www.example.com';
+$config['ban_destination'] = '{base_url}';
 $config['ban_message'] = 'This site is currently unavailable.';
 
 $config['banish_masked_ips'] = 'y';
@@ -264,8 +265,8 @@ $config['show_profiler'] = 'y';
 
 $config['smart_static_parsing'] = 'n';
 
-$config['smtp_password'] = 'ic6XpWJnv4ip';
 $config['smtp_port'] = '2525';
+$config['smtp_password'] = 'ic6XpWJnv4ip';
 $config['smtp_server'] = 'mail.example.com';
 $config['smtp_username'] = 'joe@example.com';
 
