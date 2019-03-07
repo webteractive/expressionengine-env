@@ -1,0 +1,15 @@
+{
+    "name": "webteractive/ExpressionEngine-env",
+    "description": "ExpressionEngine CMS with PHP dotenv",
+    "type": "project",
+    "require-dev": {
+        "vlucas/phpdotenv": "^3.3"
+    },
+    "authors": [
+        {
+            "name": "Glen Bangkila",
+            "email": "glen@eetechmedia.com"
+        }
+    ],
+    "require": {}
+}
