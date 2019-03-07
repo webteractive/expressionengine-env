@@ -3,7 +3,7 @@
     "description": "ExpressionEngine CMS with PHP dotenv",
     "keywords": ["ee", "ee5", "phpdotenv", "eecms", "expressionengine"],
     "type": "project",
-    "require-dev": {
+    "require": {
         "vlucas/phpdotenv": "^3.3"
     },
     "authors": [
@@ -11,6 +11,5 @@
             "name": "Glen Bangkila",
             "email": "glen@eetechmedia.com"
         }
-    ],
-    "require": {}
+    ]
 }
