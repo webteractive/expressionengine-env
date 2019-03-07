@@ -1,6 +1,7 @@
 {
     "name": "webteractive/ExpressionEngine-env",
     "description": "ExpressionEngine CMS with PHP dotenv",
+    "keywords": ["ee", "ee5", "phpdotenv", "eecms", "expressionengine"],
     "type": "project",
     "require-dev": {
         "vlucas/phpdotenv": "^3.3"

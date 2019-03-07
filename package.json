@@ -1,0 +1,21 @@
+{
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webteractive/ExpressionEngine-env.git"
+  },
+  "author": "Glen Bangkila <glen@eetechmedia.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/webteractive/ExpressionEngine-env/issues"
+  },
+  "homepage": "https://github.com/webteractive/ExpressionEngine-env#readme",
+  "devDependencies": {
+    "laravel-mix": "^4.0.14"
+  }
+}
