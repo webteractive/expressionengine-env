@@ -846,7 +846,7 @@ CREATE TABLE `exp_cp_log` (
   `action` text COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `site_id` (`site_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -855,7 +855,7 @@ CREATE TABLE `exp_cp_log` (
 
 LOCK TABLES `exp_cp_log` WRITE;
 /*!40000 ALTER TABLE `exp_cp_log` DISABLE KEYS */;
-INSERT INTO `exp_cp_log` VALUES (1,1,1,'admin','127.0.0.1',1551962649,'Logged in'),(2,1,0,'0','127.0.0.1',1552134776,'Changed password for \"admin\" (1)'),(3,1,1,'admin','127.0.0.1',1552134782,'Logged in'),(4,1,1,'admin','127.0.0.1',1552143609,'Logged in');
+INSERT INTO `exp_cp_log` VALUES (1,1,1,'admin','127.0.0.1',1551962649,'Logged in'),(2,1,0,'0','127.0.0.1',1552134776,'Changed password for \"admin\" (1)'),(3,1,1,'admin','127.0.0.1',1552134782,'Logged in'),(4,1,1,'admin','127.0.0.1',1552143609,'Logged in'),(5,1,1,'admin','127.0.0.1',1552151775,'Logged in');
 /*!40000 ALTER TABLE `exp_cp_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1801,7 +1801,7 @@ CREATE TABLE `exp_members` (
 
 LOCK TABLES `exp_members` WRITE;
 /*!40000 ALTER TABLE `exp_members` DISABLE KEYS */;
-INSERT INTO `exp_members` VALUES (1,1,'admin','admin','0aae6bede521de2c33a35ed499f00e1929d717661de3bb968e4e2cc801b8625cb161fabaac60513f7a42b9141900e25e4b5d09486fee64e7dd5200738753ac18','I{|;]-9F975N]xXH}FQfZ_d(},>^S?1_[=y!dn70)m\\LB#NOKTBztuB?[Qd<C,m|L\"LmECEwB3V~ccD}p8[[1@(5t~~):f8&$EmyxDak|MX~rc\"=inx1|jK4ZLR|AAs^','14692c3bc9c3895e544819411aba6402b04dfb2c','7258a2ed88c39595514da0b5918e24786e8b4049',NULL,'admin@example.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'y',0,0,'127.0.0.1',1551962638,1551975504,1552151247,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','y','english','UTC',NULL,NULL,NULL,NULL,NULL,NULL,'28',NULL,'18',NULL,'',NULL,'n',0,'y',0,NULL,NULL,NULL);
+INSERT INTO `exp_members` VALUES (1,1,'admin','admin','0aae6bede521de2c33a35ed499f00e1929d717661de3bb968e4e2cc801b8625cb161fabaac60513f7a42b9141900e25e4b5d09486fee64e7dd5200738753ac18','I{|;]-9F975N]xXH}FQfZ_d(},>^S?1_[=y!dn70)m\\LB#NOKTBztuB?[Qd<C,m|L\"LmECEwB3V~ccD}p8[[1@(5t~~):f8&$EmyxDak|MX~rc\"=inx1|jK4ZLR|AAs^','14692c3bc9c3895e544819411aba6402b04dfb2c','7258a2ed88c39595514da0b5918e24786e8b4049',NULL,'admin@example.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'y',0,0,'127.0.0.1',1551962638,1551975504,1552153649,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','y','english','UTC',NULL,NULL,NULL,NULL,NULL,NULL,'28',NULL,'18',NULL,'',NULL,'n',0,'y',0,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `exp_members` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2408,7 +2408,7 @@ CREATE TABLE `exp_security_hashes` (
   `hash` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`hash_id`),
   KEY `session_id` (`session_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2417,7 +2417,7 @@ CREATE TABLE `exp_security_hashes` (
 
 LOCK TABLES `exp_security_hashes` WRITE;
 /*!40000 ALTER TABLE `exp_security_hashes` DISABLE KEYS */;
-INSERT INTO `exp_security_hashes` VALUES (1,1551962649,'d8506a6feac9cca5282915f70757633eb304842c','d453a91c9f873243bce4c678b724a7b608f599d3'),(2,1552134782,'d3cbe97737924bb77a0d1758de2683287b12794e','fb40f6e54dab40f4fb342990a46d9c31e43f215b'),(3,1552143301,'54b5e520a4bf0dcafcd421fd65a8e2c522571f66','1c23cd38e5d3ebd792c70d15743671ba80d6f729'),(4,1552143609,'44919a69dfde5007b636aab1c0514798dacf6707','30cb4e0ce84b233cb8c4b73d443419332c924d11');
+INSERT INTO `exp_security_hashes` VALUES (1,1551962649,'d8506a6feac9cca5282915f70757633eb304842c','d453a91c9f873243bce4c678b724a7b608f599d3'),(2,1552134782,'d3cbe97737924bb77a0d1758de2683287b12794e','fb40f6e54dab40f4fb342990a46d9c31e43f215b'),(3,1552143301,'54b5e520a4bf0dcafcd421fd65a8e2c522571f66','1c23cd38e5d3ebd792c70d15743671ba80d6f729'),(4,1552143609,'f08b2ce97b80ff327562534e1398f6b90a5ee7c4','30cb4e0ce84b233cb8c4b73d443419332c924d11'),(5,1552151775,'a4a6f16f58986b8aa76c67b9427ba5ac6f5c337a','d265ef96429b800dcad59e302808e65718bdef2f');
 /*!40000 ALTER TABLE `exp_security_hashes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2452,7 +2452,7 @@ CREATE TABLE `exp_sessions` (
 
 LOCK TABLES `exp_sessions` WRITE;
 /*!40000 ALTER TABLE `exp_sessions` DISABLE KEYS */;
-INSERT INTO `exp_sessions` VALUES ('44919a69dfde5007b636aab1c0514798dacf6707',1,1,'127.0.0.1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0) Gecko/20100101 Firefox/65.0',NULL,'157f588dfb6bb0072c7385afa60bf802',1552147362,0,1552151471,'n');
+INSERT INTO `exp_sessions` VALUES ('a4a6f16f58986b8aa76c67b9427ba5ac6f5c337a',1,1,'127.0.0.1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0) Gecko/20100101 Firefox/65.0',NULL,'157f588dfb6bb0072c7385afa60bf802',1552151775,0,1552153649,'n'),('f08b2ce97b80ff327562534e1398f6b90a5ee7c4',1,1,'127.0.0.1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0) Gecko/20100101 Firefox/65.0',NULL,'157f588dfb6bb0072c7385afa60bf802',1552151773,0,1552151775,'n');
 /*!40000 ALTER TABLE `exp_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2829,7 +2829,7 @@ CREATE TABLE `exp_update_log` (
   `line` int(10) unsigned DEFAULT NULL,
   `file` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`log_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2838,7 +2838,7 @@ CREATE TABLE `exp_update_log` (
 
 LOCK TABLES `exp_update_log` WRITE;
 /*!40000 ALTER TABLE `exp_update_log` DISABLE KEYS */;
-INSERT INTO `exp_update_log` VALUES (1,1551962638,'Smartforge::add_key failed. Table \'exp_comments\' does not exist.','Smartforge::add_key',106,'/Users/hadefication/code/eeenv/system/ee/EllisLab/Addons/comment/upd.comment.php');
+INSERT INTO `exp_update_log` VALUES (1,1551962638,'Smartforge::add_key failed. Table \'exp_comments\' does not exist.','Smartforge::add_key',106,'/Users/hadefication/code/eeenv/system/ee/EllisLab/Addons/comment/upd.comment.php'),(2,1552153627,'Running database update step: runUpdateFile[ud_5_02_00.php]',NULL,NULL,NULL),(3,1552153628,'Update complete. Now running version 5.2.0',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `exp_update_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2916,4 +2916,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-10  1:11:50
+-- Dump completed on 2019-03-10  1:48:15

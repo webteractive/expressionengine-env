@@ -54,7 +54,7 @@ $config['cookie_prefix'] = env('COOKIE_PREFIX', 'aac');
 $config['force_redirect'] = env('FORCE_REDIRECT', 'n');
 $config['require_cookie_consent'] = env('REQUIRE_COOKIE_CONSENT', 'n');
 
-$config['app_version'] = '5.1.3';
+$config['app_version'] = '5.2.0';
 
 $config['multiple_sites_enabled'] = 'n';
 
