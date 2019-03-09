@@ -1,6 +1,6 @@
 # [ExpressionEngine CMS](https://github.com/ExpressionEngine/ExpressionEngine) with [PHP dotenv](https://github.com/vlucas/phpdotenv)
 
-An [ExpressionEngine](https://github.com/ExpressionEngine/ExpressionEngine) boilerplate that supports [PHP dotenv](https://github.com/vlucas/phpdotenv) to improve configuration management under git deployment like [Laravel Forge](https://forge.laravel.com/). [Laravel Mix](https://laravel-mix.com/) is also added to handle asset compilation with complimentary [plugin](https://github.com/webteractive/mix) to handle asset versioning URL. [Tailwind CSS](https://tailwindcss.com/docs/what-is-tailwind/) is also added because awesome and why not.
+An [ExpressionEngine](https://github.com/ExpressionEngine/ExpressionEngine) boilerplate that supports [PHP dotenv](https://github.com/vlucas/phpdotenv) to improve configuration management under git deployment like [Laravel Forge](https://forge.laravel.com/). [Laravel Mix](https://laravel-mix.com/) is also added to handle asset compilation with complimentary [plugin](https://github.com/webteractive/mix) to handle asset versioning URL. [Tailwind CSS](https://tailwindcss.com/docs/what-is-tailwind/) is also added because it's super awesome and why the hell not.
 
 ## Requirements
 1. Composer
