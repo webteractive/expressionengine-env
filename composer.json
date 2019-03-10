@@ -1,5 +1,5 @@
 {
-    "name": "webteractive/ExpressionEngine-env",
+    "name": "webteractive/expressionengine-env",
     "description": "ExpressionEngine CMS with PHP dotenv",
     "keywords": ["ee", "ee5", "phpdotenv", "eecms", "expressionengine"],
     "type": "project",
