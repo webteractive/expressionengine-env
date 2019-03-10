@@ -46,9 +46,9 @@ The `migration.sql` is an SQL dump file of a freshly installed [ExpressionEngine
 ## Environment Variables
 All config keys that has been assigned to the `env` helper method will not be changed via Admin. This is the key to not mess up your git on modifying configurations.
 
-**`BASE_PATH`** - the path where your ExpressionEngine files is located. This should be the directory where the `system` directory is located. This key is **required**.
+**`BASE_PATH`** - the path where your ExpressionEngine files are located. This should be the directory where the `system` can be found. This key is **required**.
 
-**`BASE_URL`** - the base URL. This key is **required**.
+**`BASE_URL`** - the base URL of your ExpressionEngine instance. This key is **required**.
 
 **`DB_NAME`** - the database name. This key is **required**.
 
@@ -61,10 +61,13 @@ All config keys that has been assigned to the `env` helper method will not be ch
 **`ERROR_VISIBILITY`** - determines who can see PHP/MySQL errors when they occur. Defaults to `1`. [See](https://docs.expressionengine.com/latest/general/system-configuration-overrides.html#debug) for more details on this config key.
 
 ## Assets Bundling
-A `webpack.mix.js` is provided to get your started right away on bundling your assets. If you are familiar on how Laravel Mix works then this is no sweat to you! If this is your first encounter with Laravel Mix, visit https://laravel-mix.com/ for more details on how it works.
+A `webpack.mix.js` file is also provided to get your started right away on bundling your assets. If you are familiar on how Laravel Mix works then this is no sweat to you! If this is your first encounter with Laravel Mix, visit https://laravel-mix.com/ for more details on how it works.
 
 The `assets` directory should house all your source assets. But if you like adventures then fire away, put it anywhere you like! Just remember, put your bundles inside the `public` directory. See the sample entry in the `webpack.mix.js` file for more details.
 
 To start bundling, run `npm run dev` to quick compile assets in development mode. To watch for changes, run `npm run watch`. Whenever `npm run watch` is fired, LiveReload is also enabled so your browser should be reloaded once a change in your assets is detected (after compilation). Run `npm run prod` to compile for production.
 
 A `Makefile` is also provided that houses some shortcut commands if your OS (Linux and macOS) supports it. Run `make dev` to start the development right, this will trigger `npm run watch`. Run `make prod` to compile for production.
+
+
+

@@ -66,12 +66,6 @@ $config['newrelic_include_version_number'] = 'y';
 
 $config['site_url'] = '{base_url}';
 
-// Templates
-$config['template'] = 'index';
-$config['save_tmpl_files'] = 'y';
-$config['template_group'] = 'site';
-$config['save_tmpl_revisions'] = 'y';
-
 $config['theme_folder_url'] = '{base_url}/themes/';
 $config['theme_folder_path'] = '{base_path}/public/themes/';
 
