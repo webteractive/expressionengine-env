@@ -3,6 +3,7 @@
     "description": "ExpressionEngine CMS with PHP dotenv",
     "keywords": ["ee", "ee5", "phpdotenv", "eecms", "expressionengine"],
     "type": "project",
+    "license": "Apache-2.0",
     "require": {
         "vlucas/phpdotenv": "^3.3"
     },
@@ -12,5 +13,6 @@
             "email": "hadeinvane@gmail.com"
         }
     ],
-    "license": "Apache-2.0"
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
