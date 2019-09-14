@@ -50,11 +50,12 @@ $config['dynamic_tracking_disabling'] = env('DYNAMIC_TRACKING_DISABLING', '');
 $config['enable_entry_view_tracking'] = env('ENABLE_ENTRY_VIEW_TRACKING', 'n');
 $config['enable_online_user_tracking'] = env('ENABLE_ONLINE_USER_TRACKING', 'n');
 
-$config['cookie_prefix'] = env('COOKIE_PREFIX', 'aac');
+$config['cookie_secure'] = env('COOKIE_SECURE', 'n');
+$config['cookie_prefix'] = env('COOKIE_PREFIX', 'ee5');
 $config['force_redirect'] = env('FORCE_REDIRECT', 'n');
 $config['require_cookie_consent'] = env('REQUIRE_COOKIE_CONSENT', 'n');
 
-$config['app_version'] = '5.2.0';
+$config['app_version'] = '5.2.6';
 
 $config['multiple_sites_enabled'] = 'n';
 
@@ -81,5 +82,13 @@ $config['sig_img_path'] = '{base_path}/public/images/signature_attachments/';
 
 $config['prv_msg_upload_url'] = '{base_url}/images/pm_attachments';
 $config['prv_msg_upload_path'] = '{base_path}/public/images/pm_attachments/';
+
+
+$config['redis'] = [
+	'host' => env('REDIS_HOST', '127.0.0.1'),
+  'password' => env('REDIS_PASSWORD', NULL),
+  'port' => env('REDIS_PORT', 6379),
+  'timeout' => env('REDIS_TIMEOUT', 0)
+];
 
 // EOF

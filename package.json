@@ -28,9 +28,9 @@
     "sass": "^1.17.2",
     "sass-loader": "7.*",
     "vue-template-compiler": "^2.6.8",
-    "webpack-livereload-plugin": "^1.2.0"
+    "webpack-livereload-plugin": "^2.2.0"
   },
   "dependencies": {
-    "tailwindcss": "^0.7.4"
+    "tailwindcss": "^1.1.2"
   }
 }
