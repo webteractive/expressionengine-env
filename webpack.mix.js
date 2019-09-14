@@ -1,8 +1,8 @@
-let glob = require('glob-all')
-let mix = require('laravel-mix')
-let tailwindcss = require('tailwindcss')
-let PurgecssPlugin = require('purgecss-webpack-plugin')
-let LiveReloadPlugin = require('webpack-livereload-plugin')
+const glob = require('glob-all')
+const mix = require('laravel-mix')
+const tailwindcss = require('tailwindcss')
+const PurgecssPlugin = require('purgecss-webpack-plugin')
+const LiveReloadPlugin = require('webpack-livereload-plugin')
 
 /*
 |--------------------------------------------------------------------------
@@ -53,7 +53,7 @@ mix.js('assets/js/app.js', 'public/js/')
   .sass('assets/scss/app.scss', 'public/css/')
   .options({
     processCssUrls: false,
-    postCss: [ tailwindcss('./tailwind.js') ],
+    postCss: [ tailwindcss('./tailwind.config.js') ],
   })
   .version()
 

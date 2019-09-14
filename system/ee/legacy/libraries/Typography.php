@@ -736,8 +736,15 @@ class EE_Typography {
 		//  Parse emoticons
 		$str = $this->emoticon_replace($str);
 
-		// Parse emoji
-		$str = ee('Format')->make('Text', $str)->emojiShorthand();
+		/* -------------------------------------------
+		/*	Hidden Configuration Variables
+		/*	- disable_emoji_shorthand => prevent turning text like :rocket: into 🚀 (y/n, default n)
+		/* -------------------------------------------*/
+
+		if (bool_config_item('disable_emoji_shorthand') === FALSE)
+		{
+			$str = ee('Format')->make('Text', $str)->emojiShorthand();
+		}
 
 		//  Parse censored words
 		$str = $this->filter_censored_words($str);
@@ -2487,15 +2494,32 @@ while (--j >= 0)
 			$post = (string) ee()->config->item('code_block_post');
 		}
 
-		// @todo remove ridiculous dance when PHP 5.3 is no longer supported
-		$that = $this;
-
 		return preg_replace_callback(
-			"/(\<pre\>\<code.*?\>)(.*?)(\<\/code\>\<\/pre\>)/is",
-			function ($matches) use ($pre, $post, $that) {
-				$code = $matches[2];
-				$code = ee()->functions->encode_ee_tags($code, TRUE);
-				return $pre.$matches[1].$that->encode_tags($code).$matches[3].$post;
+			"/(<pre>)?(<code.*?>)(.*?)(<\/code>)(<\/pre>)?/is",
+			function ($matches) use ($pre, $post) {
+				$code = ee('Format')->make('Text', $matches[3])->encodeEETags(['encode_vars' => TRUE]);
+
+				// deal with possible double-encoded HTML brackets from some parsers
+				// these are re-encoded singly below
+				$code = str_replace(['&amp;lt;', '&amp;gt;'], ['<', '>'], $code);
+
+				// full code block or inline <code>?
+				if ($matches[1])
+				{
+					return  $pre .                      // code_block_pre config override
+							$matches[1] .               // <pre>
+							$matches[2] .               // <code class="foo">
+							$this->encode_tags($code) . // the code sample
+							$matches[4] .               // </code>
+							$matches[5] .               // </pre>
+							$post;                      // code_block_post config override
+				}
+				else
+				{
+					return  $matches[2] .               // <code class="foo">
+							$this->encode_tags($code) . // the code sample
+							$matches[4];                // </code>
+				}
 			},
 			$str
 		);
