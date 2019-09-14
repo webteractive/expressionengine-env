@@ -9,7 +9,7 @@ An [ExpressionEngine](https://github.com/ExpressionEngine/ExpressionEngine) boil
 4. Node.JS / NPM
 
 ## Installation
-1. Download this repository as zip and extract or run `composer create-project webteractive\expressionengine-env your-app`.
+1. Download this repository as zip and extract or run `composer create-project webteractive/expressionengine-env your-app`.
 2. Run `composer install` to install dependency. This is optional if you use the `composer create-project` way.
 3. Import the `migration.sql` file to an empty database i.e. (mysql/mariadb: `mysql -uuser -p theemptydb < path/to/migration.sql`).
 4. Rename `.env.stub` to `env` and update the required keys. This is optional if you use the `composer create-project` way.
