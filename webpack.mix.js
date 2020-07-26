@@ -1,55 +1,8 @@
-const glob = require('glob-all')
 const mix = require('laravel-mix')
 const tailwindcss = require('tailwindcss')
-const PurgecssPlugin = require('purgecss-webpack-plugin')
-const LiveReloadPlugin = require('webpack-livereload-plugin')
 
-/*
-|--------------------------------------------------------------------------
-| Mix Asset Management
-|--------------------------------------------------------------------------
-|
-| Mix provides a clean, fluent API for defining some Webpack build steps
-| for your Laravel application. By default, we are compiling the Sass
-| file for your application, as well as bundling up your JS files.
-|
-*/
-
-class TailwindExtractor {
-  static extract(content) {
-    return content.match(/[A-Za-z0-9-_:\/]+/g) || []
-  }
-}
-
-mix.setPublicPath('public')
-mix.webpackConfig({
-  plugins: [
-      new LiveReloadPlugin()
-  ]
-});
-
-if (mix.inProduction()) {
-  mix.webpackConfig({
-    plugins: [
-      new PurgecssPlugin({
-
-        // Specify the locations of any files you want to scan for class names.
-        paths: glob.sync([
-          path.join(__dirname, "system/user/templates/**/*.html"),
-          path.join(__dirname, "assets/js/**/*.vue")
-        ]),
-        extractors: [
-          {
-            extractor: TailwindExtractor,
-            extensions: ["html", "js", "php", "vue"]
-          }
-        ]
-      })
-    ]
-  })
-}
-
-mix.js('assets/js/app.js', 'public/js/')
+mix.setPublicPath('./public')
+  .js('assets/js/app.js', 'public/js/')
   .sass('assets/scss/app.scss', 'public/css/')
   .options({
     processCssUrls: false,

@@ -14,7 +14,7 @@ $config['debug'] = env('ERROR_VISIBILITY', '1');
 $assign_to_config['global_vars']['env'] = $config['env'] = env('ENV', 'production');
 
 $config['base_url'] = env('BASE_URL');
-$config['base_path'] = env('BASE_PATH');
+$config['base_path'] = env('BASE_PATH', __DIR__ . '/../../../');
 $config['site_index'] = env('SITE_INDEX', '');
 $config['index_page'] = env('SITE_INDEX', '');
 $config['cp_url'] = env('CP_URL', '{base_url}/admin.php');
@@ -55,7 +55,7 @@ $config['cookie_prefix'] = env('COOKIE_PREFIX', 'ee5');
 $config['force_redirect'] = env('FORCE_REDIRECT', 'n');
 $config['require_cookie_consent'] = env('REQUIRE_COOKIE_CONSENT', 'n');
 
-$config['app_version'] = '5.2.6';
+$config['app_version'] = '5.3.2';
 
 $config['multiple_sites_enabled'] = 'n';
 

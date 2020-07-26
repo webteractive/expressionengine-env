@@ -24,6 +24,8 @@ class ChannelLayout extends Model implements LayoutInterface {
 	protected static $_primary_key = 'layout_id';
 	protected static $_table_name = 'layout_publish';
 
+	protected static $_hook_id = 'channel_layout';
+
 	protected static $_typed_columns = array(
 		'field_layout' => 'serialized',
 	);
@@ -194,7 +196,7 @@ class ChannelLayout extends Model implements LayoutInterface {
 		{
 			foreach ($section['fields'] as $j => $field_info)
 			{
-				$field_name = $field_info['field'];
+				$field_name = isset($field_info['field']) ? $field_info['field'] : 0;
 
 				if (strpos($field_name, 'field_id_') !== 0)
 				{

@@ -215,6 +215,7 @@ class Filemanager {
 	 */
 	function security_check($file_path, $prefs)
 	{
+
 		ee()->load->helper(array('file', 'xss'));
 		ee()->load->library('mime_type');
 
@@ -304,18 +305,33 @@ class Filemanager {
 	 */
 	function get_image_dimensions($file_path)
 	{
-		if (function_exists('getimagesize'))
-		{
-			$D = @getimagesize($file_path);
 
-			$image_size = array(
-				'height'	=> $D['1'],
-				'width'	=> $D['0']
-				);
+		if( ! file_exists($file_path)) {
 
-			return $image_size;
+			return FALSE;
+
 		}
 
+		// PHP7.4 does not come with GD JPEG processing by default
+		// So, we need to run this check.
+		if (function_exists('getimagesize'))
+		{
+			$imageSize = @getimagesize($file_path);
+
+			if($imageSize && is_array($imageSize)) {
+
+				$imageSizeParsed = [
+					'height'	=> $imageSize['1'],
+					'width'	=> $imageSize['0']
+				];
+
+				return $imageSizeParsed;
+
+			}
+
+		}
+
+		// The file is either not an image, or there was an error.
 		return FALSE;
 	}
 
@@ -377,7 +393,15 @@ class Filemanager {
 				return $this->_save_file_response(FALSE, lang('gd_not_installed'));
 			}
 
-		 	$prefs = $this->max_hw_check($file_path, $prefs);
+			// Check and fix orientation
+			$orientation = $this->orientation_check($file_path, $prefs);
+
+			if ( ! empty($orientation))
+			{
+				$prefs = $orientation;
+			}
+
+			$prefs = $this->max_hw_check($file_path, $prefs);
 
 			if ( ! $prefs)
 			{
@@ -405,6 +429,99 @@ class Filemanager {
 		$this->_xss_on = TRUE;
 
 		return $response;
+	}
+
+	/**
+	 * Reorient main image if exif info indicates we should
+	 *
+	 * @access	public
+	 * @return	void
+	 */
+	function orientation_check($file_path, $prefs)
+	{
+		if ( ! function_exists('exif_read_data'))
+		{
+			return;
+		}
+
+		// Not all images are supported
+		$exif = @exif_read_data($file_path);
+
+		if ( ! $exif OR ! isset($exif['Orientation']))
+		{
+			return;
+		}
+
+		$orientation = $exif['Orientation'];
+
+		if ($orientation == 1)
+		{
+			return;
+		}
+
+		// Image is rotated, let's see by how much
+		$deg = 0;
+
+		switch ($orientation) {
+			case 3:
+				$deg = 180;
+				break;
+			case 6:
+				$deg = 270;
+				break;
+			case 8:
+				$deg = 90;
+				break;
+		}
+
+		if ($deg)
+		{
+			ee()->load->library('image_lib');
+
+			ee()->image_lib->clear();
+
+			// Set required memory
+			try
+			{
+				ee('Memory')->setMemoryForImageManipulation($file_path);
+			}
+			catch (\Exception $e)
+			{
+				log_message('error', $e->getMessage().': '.$file_path);
+				return;
+			}
+
+			$config = array(
+				'rotation_angle'	=> $deg,
+				'library_path'		=> ee()->config->item('image_library_path'),
+				'image_library'		=> ee()->config->item('image_resize_protocol'),
+				'source_image'		=> $file_path
+			);
+
+			ee()->image_lib->initialize($config);
+
+			if ( ! ee()->image_lib->rotate())
+			{
+				return;
+			}
+
+			$new_image = ee()->image_lib->get_image_properties('', TRUE);
+			ee()->image_lib->clear();
+
+			// We need to reset some prefs
+			if ($new_image)
+			{
+				ee()->load->helper('number');
+				$f_size =  get_file_info($file_path);
+				$prefs['file_height'] = $new_image['height'];
+				$prefs['file_width'] = $new_image['width'];
+				$prefs['file_hw_original'] = $new_image['height'].' '.$new_image['width'];
+				$prefs['height'] = $new_image['height'];
+				$prefs['width'] = $new_image['width'];
+			}
+
+			return $prefs;
+		}
 	}
 
 	/**
@@ -1159,7 +1276,7 @@ class Filemanager {
 				return FALSE;
 			}
 
-			$resized_dir = rtrim(realpath($resized_path), DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR;
+			$resized_path = rtrim(realpath($resized_path), DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR;
 
 			// Does the thumb image exist
 			if (file_exists($resized_path.$prefs['file_name']))
@@ -1974,7 +2091,15 @@ class Filemanager {
 		// Check to see if its an editable image, if it is, check max h/w
 		if ($this->is_editable_image($file['full_path'], $file['file_type']))
 		{
-		 	$file_data = $this->max_hw_check($file['full_path'], $file_data);
+			// Check and fix orientation
+			$orientation = $this->orientation_check($file['full_path'], $file_data);
+
+			if ( ! empty($orientation))
+			{
+				$file_data = $orientation;
+			}
+
+			$file_data = $this->max_hw_check($file['full_path'], $file_data);
 
 			if ( ! $file_data)
 			{
