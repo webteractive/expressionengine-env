@@ -319,7 +319,8 @@ class Filesystem {
 			throw new FilesystemException("Cannot rename, destination already exists: {$dest}");
 		}
 
-		rename(
+		// Suppressing potential warning when renaming a directory to one that already exists.
+		@rename(
 			$this->normalize($source),
 			$this->normalize($dest)
 		);
@@ -538,7 +539,7 @@ class Filesystem {
 	public function isWritable($path)
 	{
 		// If we're on a Unix server with safe_mode off we call is_writable
-		if (DIRECTORY_SEPARATOR == '/' AND @ini_get("safe_mode") == FALSE)
+		if (DIRECTORY_SEPARATOR == '/')
 		{
 			return is_writable($this->normalize($path));
 		}
