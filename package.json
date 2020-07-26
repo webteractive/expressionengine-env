@@ -21,16 +21,13 @@
   },
   "homepage": "https://github.com/webteractive/ExpressionEngine-env#readme",
   "devDependencies": {
-    "cross-env": "^5.2.0",
-    "glob-all": "^3.1.0",
-    "laravel-mix": "^4.0.14",
-    "purgecss-webpack-plugin": "^1.4.0",
-    "sass": "^1.17.2",
-    "sass-loader": "7.*",
-    "vue-template-compiler": "^2.6.8",
-    "webpack-livereload-plugin": "^2.2.0"
+    "cross-env": "^7.0.2",
+    "laravel-mix": "^5.0.4",
+    "sass": "^1.26.10",
+    "sass-loader": "^8.0.2",
+    "vue-template-compiler": "^2.6.11"
   },
   "dependencies": {
-    "tailwindcss": "^1.1.2"
+    "tailwindcss": "^1.5.2"
   }
 }
