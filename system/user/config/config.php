@@ -14,7 +14,7 @@ $config['debug'] = env('ERROR_VISIBILITY', '1');
 $assign_to_config['global_vars']['env'] = $config['env'] = env('ENV', 'production');
 
 $config['base_url'] = env('BASE_URL');
-$config['base_path'] = env('BASE_PATH');
+$config['base_path'] = env('BASE_PATH', __DIR__ . '/../../../');
 $config['site_index'] = env('SITE_INDEX', '');
 $config['index_page'] = env('SITE_INDEX', '');
 $config['cp_url'] = env('CP_URL', '{base_url}/admin.php');
